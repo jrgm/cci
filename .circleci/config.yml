@@ -54,8 +54,8 @@ workflows:
              ignore: /^this/
            tags:
              ignore: /.*/
-     - I-Have-Code:
-     - Run-With-Node:
+     - I-Have-Code
+     - Run-With-Node
      - Hold-For-Approval:
          type: approval
          requires:
