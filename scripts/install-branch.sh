@@ -9,7 +9,8 @@ echo @@@
 git checkout this-branch
 git reset --hard origin/this-branch
 git remote -v
-git pull -u origin this-branch
+git branch --set-upstream-to=origin/this-branch this-branch
+git pull
 npm i
 ls -lart --full-time
 git rev-parse --short HEAD
