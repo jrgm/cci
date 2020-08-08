@@ -44,8 +44,8 @@ workflows:
          filters:
            branches:
              ignore: /^this/
-             tags:
-               ignore: /.*/
+           tags:
+             ignore: /.*/
      - I-Have-Code:
          requires:
            - Hello-World
