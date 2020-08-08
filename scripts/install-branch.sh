@@ -8,6 +8,8 @@ pwd
 echo @@@
 git checkout master
 git reset --hard origin/master
+git remote -v
+git pull
 ls -lart --full-time
 git rev-parse --short HEAD
 git rev-parse --abbrev-ref HEAD
