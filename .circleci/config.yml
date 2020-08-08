@@ -40,7 +40,12 @@ workflows:
  version: 2
  Example_Workflow:
    jobs:
-     - Hello-World
+     - Hello-World:
+         filters:
+           branches:
+             ignore: /^this/
+             tags:
+               ignore: /.*/
      - I-Have-Code:
          requires:
            - Hello-World
