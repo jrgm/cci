@@ -13,7 +13,7 @@ jobs:
             
 workflows:
  version: 2
- Example_Workflow:
+ foop:
    jobs:
      - foop:
          filters:
