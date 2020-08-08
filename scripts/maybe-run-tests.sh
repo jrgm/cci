@@ -2,14 +2,13 @@
 set -x
 
 CONTENT_SERVER_DOMAIN="${1:-accounts.stage.mozaws.net}"
-/bin/rm -f previous-fxa-content-version-commit-sha.txt
+ls -lart
 
 # This script is called from a circleci job that uses {restore,save}_cache
 # to cache the previously __version__ sha. Note: the $PREVIOUS_SHA_FILE name
 # must match the path specified in save_cache of the calling job.
 PREVIOUS_SHA=""
 PREVIOUS_SHA_FILE="v1-previous-fxa-content-version-commit-sha.txt"
-ls -lart
 if [ -f "${PREVIOUS_SHA_FILE}" ]; then
   PREVIOUS_SHA=$(cat "${PREVIOUS_SHA_FILE}")
 fi
