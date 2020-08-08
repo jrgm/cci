@@ -5,17 +5,9 @@ jobs:
       - image: circleci/node:12
     steps:
       - checkout
-      - restore_cache:
-          keys:
-            - v1-previous-fxa-content-version-commit-sha
       - run:
           name: run the tests if the sha has changed
           command: ./scripts/maybe-run-tests.sh
-      - save_cache:
-          key: v1-previous-fxa-content-version-commit-sha
-          paths:
-            # this path must match the $PREVIOUS_SHA_FILE above
-            - v1-previous-fxa-content-version-commit-sha.txt
 
   foop2:
     docker:
