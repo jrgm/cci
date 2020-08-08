@@ -1,5 +1,4 @@
 #!/usr/bin/env sh
-
 set -x
 
 CONTENT_SERVER_DOMAIN="${1:-accounts.stage.mozaws.net}"
