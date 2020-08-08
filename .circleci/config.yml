@@ -18,6 +18,6 @@ workflows:
      - I-Have-Code:
          filters:
            branches:
-             ignore: /^this/
+             ignore: /^this*/
            tags:
              ignore: /.*/
