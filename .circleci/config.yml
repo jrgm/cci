@@ -13,13 +13,14 @@ jobs:
           name: check current __version__ commit sha
           command: |
             PREVIOUS_SHA=""
-            if [ -f ./previous-fxa-content-version-commit-sha.txt ]; then
-              PREVIOUS_SHA="$(cat ./previous-fxa-content-version-commit-sha.txt)"
+            PREVIOUS_SHA_FILE="./previous-fxa-content-version-commit-sha.txt"
+            if [ -f "${PREVIOUS_SHA_FILE}" ]; then
+              PREVIOUS_SHA=$(cat "${PREVIOUS_SHA_FILE}")
             fi
             /bin/echo PREVIOUS_SHA: $PREVIOUS_SHA
             COMMIT_SHA=$(curl -s https://accounts.stage.mozaws.net/__version__ | perl -ne 'next unless /"commit":\s+"([^"]*)"/; print $1, $/')
             /bin/echo COMMIT_SHA: $COMMIT_SHA
-            /bin/echo -n $COMMIT_SHA > previous-fxa-content-version-commit-sha.txt
+            /bin/echo -n $COMMIT_SHA > "${PREVIOUS_SHA_FILE}"
       - save_cache:
           key: v1-previous-fxa-content-version-commit-sha
           paths: 
