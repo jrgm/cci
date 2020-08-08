@@ -14,14 +14,17 @@ if [ -f "${PREVIOUS_SHA_FILE}" ]; then
 fi
 
 COMMIT_SHA=$(curl -s https://${CONTENT_SERVER_DOMAIN}/__version__ | perl -ne 'next unless /"commit":\s+"([^"]*)"/; print $1, $/')
+echo current: "${COMMIT_SHA}" previous: "${PREVIOUS_SHA}"
 
 if [ -z "${COMMIT_SHA}" ]; then
   # if no parseable response, bail out
+  echo if no parseable response, bail out
   exit 0
 fi
 
 if [ "${COMMIT_SHA}" ne "${PREVIOUS_SHA}" ]; then
   # run the test
+  echo run the test
   exit 0
 fi
 
