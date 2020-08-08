@@ -10,6 +10,7 @@ git checkout master
 git reset --hard origin/master
 git remote -v
 git pull
+npm i
 ls -lart --full-time
 git rev-parse --short HEAD
 git rev-parse --abbrev-ref HEAD
