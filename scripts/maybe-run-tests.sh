@@ -22,7 +22,7 @@ if [ -z "${COMMIT_SHA}" ]; then
   exit 0
 fi
 
-if [[ "${COMMIT_SHA}" ne "${PREVIOUS_SHA}" ]]; then
+if [[ "${COMMIT_SHA}" == "${PREVIOUS_SHA}" ]]; then
   # run the test
   echo run the test
   exit 0
