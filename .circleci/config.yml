@@ -7,7 +7,8 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: previous-fxa-content-version-commit-sha
+          keys:
+            - v1-previous-fxa-content-version-commit-sha
       - run:
           name: check current __version__ commit sha
           command: |
@@ -20,8 +21,10 @@ jobs:
             /bin/echo COMMIT_SHA: $COMMIT_SHA
             /bin/echo -n $COMMIT_SHA > previous-fxa-content-version-commit-sha.txt
       - save_cache:
-          key: previous-fxa-content-version-commit-sha
-          path: previous-fxa-content-version-commit-sha.txt
+          keys: 
+            - v1-previous-fxa-content-version-commit-sha
+          paths: 
+            - previous-fxa-content-version-commit-sha.txt
 
   foop2:
     docker:
