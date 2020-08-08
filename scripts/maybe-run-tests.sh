@@ -8,7 +8,7 @@ CONTENT_SERVER_DOMAIN="${1:-accounts.stage.mozaws.net}"
 # to cache the previously __version__ sha. Note: the $PREVIOUS_SHA_FILE name
 # must match the path specified in save_cache of the calling job.
 PREVIOUS_SHA=""
-PREVIOUS_SHA_FILE="./v1-previous-fxa-content-version-commit-sha.txt"
+PREVIOUS_SHA_FILE="v1-previous-fxa-content-version-commit-sha.txt"
 ls -lart
 if [ -f "${PREVIOUS_SHA_FILE}" ]; then
   PREVIOUS_SHA=$(cat "${PREVIOUS_SHA_FILE}")
