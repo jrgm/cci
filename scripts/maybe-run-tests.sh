@@ -9,6 +9,7 @@ CONTENT_SERVER_DOMAIN="${1:-accounts.stage.mozaws.net}"
 # must match the path specified in save_cache of the calling job.
 PREVIOUS_SHA=""
 PREVIOUS_SHA_FILE="./v1-previous-fxa-content-version-commit-sha.txt"
+ls -lart
 if [ -f "${PREVIOUS_SHA_FILE}" ]; then
   PREVIOUS_SHA=$(cat "${PREVIOUS_SHA_FILE}")
 fi
