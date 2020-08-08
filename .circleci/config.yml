@@ -9,17 +9,8 @@ jobs:
           keys:
             - v1-previous-fxa-content-version-commit-sha
       - run:
-          name: check current __version__ commit sha
-          command: |
-            PREVIOUS_SHA=""
-            PREVIOUS_SHA_FILE="./v1-previous-fxa-content-version-commit-sha.txt"
-            if [ -f "${PREVIOUS_SHA_FILE}" ]; then
-              PREVIOUS_SHA=$(cat "${PREVIOUS_SHA_FILE}")
-            fi
-            /bin/echo PREVIOUS_SHA: $PREVIOUS_SHA
-            COMMIT_SHA=$(curl -s https://accounts.stage.mozaws.net/__version__ | perl -ne 'next unless /"commit":\s+"([^"]*)"/; print $1, $/')
-            /bin/echo COMMIT_SHA: $COMMIT_SHA
-            /bin/echo -n $COMMIT_SHA > "${PREVIOUS_SHA_FILE}"
+          name: run the tests if the sha has changed
+          command: ./scripts/maybe-run-tests.sh
       - save_cache:
           key: v1-previous-fxa-content-version-commit-sha
           paths:
