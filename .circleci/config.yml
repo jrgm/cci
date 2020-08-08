@@ -15,6 +15,14 @@ jobs:
     steps:
       - checkout
       - run:
+          name: what-branch
+          command: |
+            GIT_SHA=$(git rev-parse --short HEAD)
+            GIT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+            GIT_LOG_MSG=$(git log --format='%s' -1 | head -1 | perl -pe 's/%/%%/')
+            printf "* $GIT_BRANCH -> $GIT_SHA -> ${GIT_LOG_MSG}\n"
+
+      - run:
           name: Code Has Arrived
           command: |
             ls -al
