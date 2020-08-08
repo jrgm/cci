@@ -5,6 +5,9 @@ jobs:
       - image: circleci/node:12
     steps:
       - checkout
+      - restore_cache:
+          keys:
+            - v1-previous-fxa-content-version-commit-sha
       - run:
           name: run the tests if the sha has changed
           command: ./scripts/maybe-run-tests.sh
