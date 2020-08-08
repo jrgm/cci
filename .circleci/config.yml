@@ -11,7 +11,7 @@ jobs:
             echo 'This is the delivery pipeline'
   I-Have-Code:
     docker:
-      - image: alpine:3.7
+      - image: circleci/node:12
     steps:
       - checkout
       - run:
