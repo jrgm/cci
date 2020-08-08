@@ -21,7 +21,7 @@ jobs:
             /bin/echo COMMIT_SHA: $COMMIT_SHA
             /bin/echo -n $COMMIT_SHA > previous-fxa-content-version-commit-sha.txt
       - save_cache:
-          keys: v1-previous-fxa-content-version-commit-sha
+          key: v1-previous-fxa-content-version-commit-sha
           paths: 
             - previous-fxa-content-version-commit-sha.txt
 
