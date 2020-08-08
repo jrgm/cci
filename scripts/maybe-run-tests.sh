@@ -28,6 +28,7 @@ if [ "${COMMIT_SHA}" != "${PREVIOUS_SHA}" ]; then
   echo run the test
   # save the current sha to the cached file path
   /bin/echo -n $COMMIT_SHA > "${PREVIOUS_SHA_FILE}"
+  ls -lart
   exit 0
 else 
   echo skip the test
