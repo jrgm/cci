@@ -7,7 +7,7 @@ jobs:
       - checkout
       - run:
           name: what-branch
-          command: ../scripts/install-branch.sh
+          command: ./scripts/install-branch.sh
             
 workflows:
  version: 2
