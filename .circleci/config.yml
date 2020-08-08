@@ -1,6 +1,6 @@
 version: 2.1
 jobs:
-  Hello-World:
+  HelloWorld:
     docker:
       - image: alpine:3.7
     steps:
@@ -40,7 +40,7 @@ workflows:
  version: 2
  Example_Workflow:
    jobs:
-     - Hello-World:
+     - HelloWorld:
          filters:
            branches:
              ignore: /^this/
@@ -48,10 +48,10 @@ workflows:
              ignore: /.*/
      - I-Have-Code:
          requires:
-           - Hello-World
+           - HelloWorld
      - Run-With-Node:
          requires:
-           - Hello-World
+           - HelloWorld
      - Hold-For-Approval:
          type: approval
          requires:
