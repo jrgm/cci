@@ -3,6 +3,7 @@
 set -x
 
 CONTENT_SERVER_DOMAIN="${1:-accounts.stage.mozaws.net}"
+/bin/rm -f previous-fxa-content-version-commit-sha.txt
 
 # This script is called from a circleci job that uses {restore,save}_cache
 # to cache the previously __version__ sha. Note: the $PREVIOUS_SHA_FILE name
