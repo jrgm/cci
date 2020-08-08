@@ -1,5 +1,4 @@
 version: 2.1
-
 jobs:
   foop:
     docker:
@@ -13,7 +12,7 @@ jobs:
           name: check current __version__ commit sha
           command: |
             PREVIOUS_SHA=""
-            PREVIOUS_SHA_FILE="./previous-fxa-content-version-commit-sha.txt"
+            PREVIOUS_SHA_FILE="./v1-previous-fxa-content-version-commit-sha.txt"
             if [ -f "${PREVIOUS_SHA_FILE}" ]; then
               PREVIOUS_SHA=$(cat "${PREVIOUS_SHA_FILE}")
             fi
@@ -23,8 +22,9 @@ jobs:
             /bin/echo -n $COMMIT_SHA > "${PREVIOUS_SHA_FILE}"
       - save_cache:
           key: v1-previous-fxa-content-version-commit-sha
-          paths: 
-            - previous-fxa-content-version-commit-sha.txt
+          paths:
+            # this path must match the $PREVIOUS_SHA_FILE above
+            - ./v1-previous-fxa-content-version-commit-sha.txt
 
   foop2:
     docker:
