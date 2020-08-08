@@ -14,6 +14,7 @@ if [ -f "${PREVIOUS_SHA_FILE}" ]; then
 fi
 
 COMMIT_SHA=$(curl -s https://${CONTENT_SERVER_DOMAIN}/__version__ | perl -ne 'next unless /"commit":\s+"([^"]*)"/; print $1, $/')
+COMMIT_SHA="${COMMIT_SHA}x"
 echo current: "${COMMIT_SHA}" previous: "${PREVIOUS_SHA}"
 
 if [ -z "${COMMIT_SHA}" ]; then
