@@ -55,11 +55,7 @@ workflows:
            tags:
              ignore: /.*/
      - I-Have-Code:
-         requires:
-           - HelloWorld
      - Run-With-Node:
-         requires:
-           - HelloWorld
      - Hold-For-Approval:
          type: approval
          requires:
