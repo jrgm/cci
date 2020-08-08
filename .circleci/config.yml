@@ -20,23 +20,6 @@ jobs:
             git rev-parse --abbrev-ref HEAD
             git log --format='%s' -1 | head -1 | perl -pe 's/%/%%/'
             
-  Run-With-Node:
-    docker:
-      - image: circleci/node:10
-    steps:
-      - run:
-          name: Running In A Container With Node
-          command: |
-            node -v
-  Now-Complete:
-    docker:
-      - image: alpine:3.7
-    steps:
-      - run:
-          name: Approval Complete
-          command: |
-            echo 'Do work once the approval has completed'
-
 workflows:
  version: 2
  Example_Workflow:
@@ -47,12 +30,3 @@ workflows:
              ignore: /^this/
            tags:
              ignore: /.*/
-     - Run-With-Node
-     - Hold-For-Approval:
-         type: approval
-         requires:
-           - Run-With-Node
-           - I-Have-Code
-     - Now-Complete:
-         requires:
-           - Hold-For-Approval
