@@ -1,14 +1,5 @@
 version: 2.1
 jobs:
-  HelloWorld:
-    docker:
-      - image: alpine:3.7
-    steps:
-      - run:
-          name: Hello World
-          command: |
-            echo 'Hello World!'
-            echo 'This is the delivery pipeline'
   I-Have-Code:
     docker:
       - image: circleci/node:12
@@ -48,13 +39,12 @@ workflows:
  version: 2
  Example_Workflow:
    jobs:
-     - HelloWorld:
+     - I-Have-Code
          filters:
            branches:
              ignore: /^this/
            tags:
              ignore: /.*/
-     - I-Have-Code
      - Run-With-Node
      - Hold-For-Approval:
          type: approval
