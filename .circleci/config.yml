@@ -39,7 +39,7 @@ workflows:
  version: 2
  Example_Workflow:
    jobs:
-     - I-Have-Code
+     - I-Have-Code:
          filters:
            branches:
              ignore: /^this/
