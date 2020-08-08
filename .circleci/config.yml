@@ -8,7 +8,6 @@ jobs:
       - run:
           name: what-branch
           command: |
-            ls -lart --full-time
             ./scripts/install-branch.sh
             
 workflows:
