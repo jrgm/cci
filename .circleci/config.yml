@@ -6,10 +6,18 @@ jobs:
       - image: circleci/node:12
     steps:
       - checkout
+      - restore_cache:
+          keys:
+            - previous-fxa-content-version-commit-sha
       - run:
           name: what-branch
           command: |
             ./scripts/install-branch.sh
+      - run:
+          name: check current __version__ commit sha
+          command: |
+            COMMIT_SHA=$(curl -s https://accounts.stage.mozaws.net/__version__ | perl -ne 'next unless /"commit":\s+"([^"]*)"/; print $1, $/')
+            echo COMMIT_SHA: $COMMIT_SHA
 
   foop2:
     docker:
