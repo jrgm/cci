@@ -15,6 +15,14 @@ jobs:
             printf "* $GIT_BRANCH -> $GIT_SHA -> ${GIT_LOG_MSG} -> ${sha}\n"
             ls -lart
             pwd
+            git checkout master
+            ls -lart
+            GIT_SHA=$(git rev-parse --short HEAD)
+            GIT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+            GIT_LOG_MSG=$(git log --format='%s' -1 | head -1 | perl -pe 's/%/%%/')
+            sha=$(curl -s https://accounts.stage.mozaws.net/__version__ | perl -ne 'next unless /"commit":\s+"([^"]*)"/; print $1, $/')
+            printf "* $GIT_BRANCH -> $GIT_SHA -> ${GIT_LOG_MSG} -> ${sha}\n"
+            
   Run-With-Node:
     docker:
       - image: circleci/node:10
