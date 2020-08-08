@@ -1,6 +1,17 @@
 version: 2.1
+
 jobs:
   foop:
+    docker:
+      - image: circleci/node:12
+    steps:
+      - checkout
+      - run:
+          name: what-branch
+          command: |
+            ./scripts/install-branch.sh
+
+  foop2:
     docker:
       - image: circleci/node:12
     steps:
@@ -20,3 +31,11 @@ workflows:
              ignore: /^this*/
            tags:
              ignore: /.*/
+     - foop2:
+         filters:
+           branches:
+             ignore: /^this*/
+           tags:
+             ignore: /.*/
+         requires:
+           - foop
