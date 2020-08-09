@@ -8,16 +8,6 @@ jobs:
       - run:
           name: run the tests if the sha has changed
           command: ./scripts/maybe-run-tests.sh
-
-  foop2:
-    docker:
-      - image: circleci/node:12
-    steps:
-      - checkout
-      - run:
-          name: what-branch
-          command: |
-            ./scripts/install-branch.sh
             
 workflows:
  version: 2
@@ -29,11 +19,3 @@ workflows:
              ignore: /^this*/
            tags:
              ignore: /.*/
-     - foop2:
-         filters:
-           branches:
-             ignore: /^this*/
-           tags:
-             ignore: /.*/
-         requires:
-           - foop
