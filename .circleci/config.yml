@@ -16,6 +16,14 @@ workflows:
      - foop:
          filters:
            branches:
+             ignore: /^this.*/
+           tags:
+             ignore: /.*/
+     - foop2:
+         filters:
+           branches:
              ignore: /^this*/
            tags:
              ignore: /.*/
+         requires:
+           - foop
