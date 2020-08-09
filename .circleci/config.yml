@@ -17,6 +17,6 @@ workflows:
      - foop:
          filters:
            branches:
-             ignore: /^that.*/
+             only: /^this.*/
            tags:
              ignore: /.*/
